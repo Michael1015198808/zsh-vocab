@@ -19,12 +19,12 @@ def help():
     print("Usage: vocab <command>")
     print("Commands:")
     display("word", "Get one word(Default)")
-    print("  show\t\t  Print all words on the vocabulary")
-    print("  add <en> <ch>   Add a new word")
-    print("  init\t\tDo initialization")
-    print("Options")
-    print("  --version\t  Display version information")
-    print("  --help\t  Display help information")
+    display("show", "Print all words on the vocabulary")
+    display("add <en> <ch>"," Add a new word")
+    display("init","Do initialization")
+    display("Options")
+    display("--version","Display version information")
+    display("--help","Display help information")
 
 def show():
     words=read()
