@@ -20,7 +20,7 @@ def help():
     print("Commands:")
     display("word", "Get one word(Default)")
     display("show", "Print all words on the vocabulary")
-    display("add <en> <ch>"," Add a new word")
+    display("add <en> <ch>","Add a new word")
     display("init","Do initialization")
     print("Options")
     display("--version","Display version information")
