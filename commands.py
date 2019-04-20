@@ -24,6 +24,7 @@ def help():
     display("show", "Print all words on the vocabulary")
     display("add <en> <ch>","Add a new word")
     display("init","Do initialization")
+    display("rm <en>|<ch>","Remove a word from list")
     print("Options")
     display("--version","Display version information")
     display("--help","Display help information")
@@ -48,6 +49,9 @@ def init():
     else:
         print("Initialization canceled")
 
+def remove():
+    if argv
+    for word in words:
 handler_dict={
     r"--version":version,
     r"--help":help,
@@ -57,4 +61,6 @@ handler_dict={
     r"show":show,
     r"add":add,
     r"word":get_word,
+    r"rm":remove,
+    r"remove":remove,
 }
