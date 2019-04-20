@@ -59,7 +59,7 @@ def remove():
                 return
         print(argv[2]+" not found!")
     else:
-        print"Format error!")
+        print("Format error!")
         print("usage: "+argv[1]+" <en>|<ch>")
 handler_dict={
     r"--version":version,
