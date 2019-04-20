@@ -52,7 +52,7 @@ def init():
 def remove():
     if len(argv)==3:
         words=read()
-        for i in len(words):
+        for i in range(0,len(words)):
             if words[i][0]==argv[2] or words[i][1]==argv[2]:
                 del words[i]
                 write(words)
