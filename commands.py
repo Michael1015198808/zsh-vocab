@@ -27,7 +27,7 @@ def show():
 
 def get_word():
     words=read()
-    i=randint(0,len(words))
+    i=randint(0,len(words)-1)
     word=words[i]
     print(word[0]+"\t"+word[1]+"\t")
 
