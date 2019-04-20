@@ -1,6 +1,12 @@
 from include import *
 from word import *
 from random import randint
+def display(cmd,effe):
+    print("  "+cmd,end="")
+    for i in range(0,14-len(cmd)):
+        print(" ",end="")
+    print(effe)
+
 def add():
     words=read()
     words.append([argv[2],argv[3],0,1])
@@ -12,7 +18,7 @@ def version():
 def help():
     print("Usage: vocab <command>")
     print("Commands:")
-    print("  word\t\t  Get one word(Default)")
+    display("word", "Get one word(Default)")
     print("  show\t\t  Print all words on the vocabulary")
     print("  add <en> <ch>   Add a new word")
     print("  init\t\tDo initialization")
