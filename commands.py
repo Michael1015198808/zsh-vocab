@@ -1,8 +1,10 @@
 from include import *
 from word import *
 from random import randint
-def display(cmd,effe,cmdlen=15):
-    print("  "+cmd,end="")
+def display(cmd,effe,cmdlen=15,indent=2):
+    for i in range(0,indent):
+        print(" ",end="")
+    print(cmd,end="")
     for i in range(0,cmdlen-len(cmd)):
         print(" ",end="")
     print(effe)
