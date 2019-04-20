@@ -29,7 +29,7 @@ def help():
 def show():
     words=read()
     for word in words:
-        print(word[0]+"\t"+word[1]+"\t")
+        display(word[0],word[1])
 
 def get_word():
     words=read()
