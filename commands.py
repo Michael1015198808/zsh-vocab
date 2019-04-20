@@ -3,7 +3,7 @@ from word import *
 from random import randint
 def display(cmd,effe):
     print("  "+cmd,end="")
-    for i in range(0,14-len(cmd)):
+    for i in range(0,15-len(cmd)):
         print(" ",end="")
     print(effe)
 
@@ -22,7 +22,7 @@ def help():
     display("show", "Print all words on the vocabulary")
     display("add <en> <ch>"," Add a new word")
     display("init","Do initialization")
-    display("Options")
+    print("Options")
     display("--version","Display version information")
     display("--help","Display help information")
 
