@@ -31,13 +31,13 @@ def help():
 def show():
     words=read()
     for word in words:
-        display(word[0],word[1])
+        display(word[0],word[1],indent=0)
 
 def get_word():
     words=read()
     i=randint(0,len(words)-1)
     word=words[i]
-    display(word[0],word[1])
+    display(word[0],word[1],indent=0)
 
 def init():
     print("Are you sure you want to initialize? ALL files will be cleared unless you backup them manually")
