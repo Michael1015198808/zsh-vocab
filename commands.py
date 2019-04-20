@@ -1,9 +1,9 @@
 from include import *
 from word import *
 from random import randint
-def display(cmd,effe):
+def display(cmd,effe,cmdlen=15):
     print("  "+cmd,end="")
-    for i in range(0,15-len(cmd)):
+    for i in range(0,cmdlen-len(cmd)):
         print(" ",end="")
     print(effe)
 
@@ -35,7 +35,7 @@ def get_word():
     words=read()
     i=randint(0,len(words)-1)
     word=words[i]
-    print(word[0]+"\t"+word[1]+"\t")
+    display(word[0],word[1])
 
 def init():
     print("Are you sure you want to initialize? ALL files will be cleared unless you backup them manually")
