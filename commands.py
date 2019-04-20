@@ -50,8 +50,17 @@ def init():
         print("Initialization canceled")
 
 def remove():
-    if argv
-    for word in words:
+    if len(argv)==3:
+        words=read()
+        for i in len(words):
+            if words[i][0]==argv[2] or words[i][1]==argv[2]:
+                del words[i]
+                write(words)
+                return
+        print(argv[2]+" not found!")
+    else:
+        print"Format error!")
+        print("usage: "+argv[1]+" <en>|<ch>")
 handler_dict={
     r"--version":version,
     r"--help":help,
