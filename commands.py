@@ -61,8 +61,8 @@ def init():
         print("Initialization canceled")
 
 def remove():
+    words=read()
     if len(argv)==3:
-        words=read()
         for i in range(0,len(words)):
             if words[i][0]==argv[2] or words[i][1]==argv[2]:
                 del words[i]
@@ -70,8 +70,20 @@ def remove():
                 return
         print(argv[2]+" not found!")
     else:
-        print("Format error!")
-        print("usage: "+argv[1]+" <en>|<ch>")
+        try:
+            with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
+                i=json.load(f)
+        except:
+            print("Can't fine the last word",file=stderr)
+            exit()
+        print("The last word is"+words[i][0]+words[i][1])
+        print("Would you like to delete it from the list?(y for yes)")
+        if input()=="y":
+            del words[i]
+            write(words)
+            return
+        else:
+            print("operation canceled!")
 handler_dict={
     r"--version":version,
     r"--help":help,
