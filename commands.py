@@ -30,7 +30,7 @@ def help():
     display("--help","Display help information")
     print(r"To load a existed word list, copy it to ~/.vocab/data.json")
     print('''Format:
-        [["intern", "\u6263\u62bc\uff0c\u62d8\u7559", 0, 1]]''')
+        [["intern", "扣押，拘留", 0, 1]]''')
 def show():
     words=read()
     for word in words:
