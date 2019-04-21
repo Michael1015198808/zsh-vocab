@@ -33,6 +33,7 @@ def help():
         [["intern", "扣押，拘留", 0, 1], ["sore", "\u75bc\u75db\u7684", 0, 1]]
 (English,Chinese,two numbers for further consideration)
 (The order of English and Chinese can be swaped)''')
+
 def show():
     words=read()
     for word in words:
