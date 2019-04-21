@@ -28,7 +28,10 @@ def help():
     print("Options")
     display("--version","Display version information")
     display("--help","Display help information")
-
+    print(r"To load a existed word list, copy it to ~/.vocab/data.json")
+    print("Format:
+[["intern", "\u6263\u62bc\uff0c\u62d8\u7559", 0, 1]]
+")"
 def show():
     words=read()
     for word in words:
@@ -76,7 +79,8 @@ def remove():
         except:
             print("Can't fine the last word",file=stderr)
             exit()
-        print("The last word is"+words[i][0]+words[i][1])
+        print("The last word is",end="")
+        display(words[i][0],words[i][1],indent=0)
         print("Would you like to delete it from the list?(y for yes)")
         if input()=="y":
             del words[i]
