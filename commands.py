@@ -24,7 +24,7 @@ def help():
     display("show", "Print all words on the vocabulary")
     display("add <en> <ch>","Add a new word")
     display("init","Do initialization")
-    display("rm <en>|<ch>","Remove a word from list(default the last word)")
+    display("rm <en>|<ch>","Remove a word from list(Default: the last word)")
     print("Options")
     display("--version","Display version information")
     display("--help","Display help information")
