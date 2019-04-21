@@ -24,7 +24,7 @@ def help():
     display("show", "Print all words on the vocabulary")
     display("add <en> <ch>","Add a new word")
     display("init","Do initialization")
-    display("rm <en>|<ch>","Remove a word from list")
+    display("rm <en>|<ch>","Remove a word from list(default the last word)")
     print("Options")
     display("--version","Display version information")
     display("--help","Display help information")
@@ -35,10 +35,21 @@ def show():
         display(word[0],word[1],indent=0)
 
 def get_word():
+    try:
+        with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
+            i=json.load(f)
+    except json.decoder.JSONDecodeError:
+        i=0
     words=read()
-    i=randint(0,len(words)-1)
+    i+=randint(0,len(words)-1)
+    i%=len(words)
     word=words[i]
     display(word[0],word[1],indent=0)
+    try:
+        with open(os.path.expanduser("~/.vocab/last_word.json"),"w") as f:
+            json.dump((i),f)
+    except FileNotFoundError:
+        pass
 
 def init():
     print("Are you sure you want to initialize? ALL files will be cleared unless you backup them manually")
