@@ -6,21 +6,27 @@ Though this tool can't allow you to recite word at any time, it allows you to re
 ## Installation
 
 You can execute this program manually by
+
     python3 vocab.py [args]
 Or, you can add it to your shellrc like(That's exactly what I do)
+
     function vocab {
         python3 ~/vocabulary/main.py $*
     }
 You can add a file to /bin, like /bin/vocab as well
+
     python3 ~/vocabulary/main.py $*
 
 ## Automation
 Add the following to your zsh(Or other shell)'s theme
+
     $(vocab)
 or
+
     $(python3 ~/vocabulary/main.py)
 
 That's my zsh's theme
+
     PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;30m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - <$(git_prompt_info)> - %{\e[0;34m%}%B[%b%{\e[0;33m%}'%D{"%a %b %d, %H:%M"}%b$'%{\e[0;34m%}%B]%b%{\e[0m%}$(if [ $temp ]; then echo ;echo -ne "\033[0;34m%B│"; echo temp:$temp; fi)
     %{\e[0;34m%}%B│$(vocab)
     %{\e[0;34m%}%B└─%b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%b%{\e[0;34m%}%B] %{\e[1;35m%}$%{\e[0m%}%b'
@@ -31,6 +37,9 @@ If you would like a commonly used list(CET 4/6, TOEFL, IELTS) and you have a wor
 
 ## Demo
 TO BE ADDED.
+
+## screenshots
+![](screenshots/demo1.png)
 
 ## Enviorment
 This repo only supports Python3 now. It may supports Python2 in the future.
