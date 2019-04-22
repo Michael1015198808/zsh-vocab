@@ -1,5 +1,10 @@
-# zsh-vocab
+## Beta Version
+This is the Beta Version of zsh-vocab.
+It will not be updated **forever**.
+This branch is just for a commemoration.
+bugs in this tool and grammer errors will not be fixed as well.
 
+# zsh-vocab
 Have you ever think of a software or a plugin that allows you to recite words at any time?
 Though this tool can't allow you to recite word at any time, it allows you to recite words when using zsh!(Or other powerful shell)
 
