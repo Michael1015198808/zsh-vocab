@@ -42,7 +42,10 @@ TO BE ADDED.
 ![](screenshots/demo1.png)
 
 ## Enviorment
+Language: Python3
+System: debian9
 This repo only supports Python3 now. It may supports Python2 in the future.
+This repo supports debian 9(My PC), other Linux systems haven't be tested. Other systems like Windows or Mac-os haven't be tested either.
 
 ## Other things
 For any advices or bugs founded, just create a new issue or a pull request.
