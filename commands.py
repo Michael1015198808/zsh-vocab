@@ -15,7 +15,7 @@ def add():
     write(words)
 
 def version():
-    print("version: beta")
+    print("version: Release V1.0")
 
 def help():
     print("Usage: vocab <command>")
