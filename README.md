@@ -8,6 +8,12 @@ bugs in this tool and grammer errors will not be fixed as well.
 Have you ever think of a software or a plugin that allows you to recite words at any time?
 Though this tool can't allow you to recite word at any time, it allows you to recite words when using zsh!(Or other powerful shell)
 
+## Demo
+![](demo.gif)
+
+## screenshots
+![](screenshots/demo1.png)
+
 ## Installation
 
 You can execute this program manually by
@@ -39,12 +45,6 @@ That's my zsh's theme
 ## Download word list
 Create a json file according to the format shown in python3 main.py --help, and then copy to ~/.vocab/data.json.
 If you would like a commonly used list(CET 4/6, TOEFL, IELTS) and you have a word list of some other format, you can create a issue and I'll add the word list to a branch.
-
-## Demo
-TO BE ADDED.
-
-## screenshots
-![](screenshots/demo1.png)
 
 ## Enviorment
 Language: Python3
