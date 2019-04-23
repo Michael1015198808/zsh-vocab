@@ -13,6 +13,11 @@ def add():
     words=read()
     words.append([argv[2],argv[3],0,1])
     write(words)
+    try:
+        with open(os.path.expanduser("~/.vocab/last_word.json"),"w") as f:
+            json.dump((-1),f)
+    except FileNotFoundError:
+        pass
 
 def version():
     print("version: beta")
@@ -38,6 +43,7 @@ def show():
     words=read()
     for word in words:
         display(word[0],word[1],indent=0)
+    print(str(len(words))+" words in total!")
 
 def get_word():
     try:
@@ -46,8 +52,11 @@ def get_word():
     except json.decoder.JSONDecodeError:
         i=0
     words=read()
-    i+=randint(0,len(words)-1)
-    i%=len(words)
+    if i==-1:
+        i=len(words)-1
+    else:
+        i+=randint(0,len(words)-1)
+        i%=len(words)
     word=words[i]
     display(word[0],word[1],indent=0)
     try:
@@ -84,7 +93,7 @@ def remove():
         print("The last word is",end="")
         display(words[i][0],words[i][1],indent=0)
         print("Would you like to delete it from the list?(y for yes)")
-        if input()=="y":
+        if input() in {"y","yes"}:
             del words[i]
             write(words)
             return
@@ -97,6 +106,7 @@ handler_dict={
     r"help":help,
     r"init":init,
     r"show":show,
+    r"list":show,
     r"add":add,
     r"word":get_word,
     r"rm":remove,
