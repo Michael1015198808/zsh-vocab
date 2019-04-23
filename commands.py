@@ -11,6 +11,10 @@ def display(cmd,effe,cmdlen=15,indent=2):
 
 def add():
     words=read()
+    for word in words:
+        if argv[2]==word[0]:
+            print(argv[2]+" exists!")
+            return
     words.append([argv[2],argv[3],0,1])
     write(words)
     try:
