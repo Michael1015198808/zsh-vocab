@@ -1,6 +1,7 @@
 from include import *
 from word import *
 from random import randint
+from random import random
 def display(cmd,effe,cmdlen=15,indent=2):
     for i in range(0,indent):
         print(" ",end="")
@@ -9,12 +10,29 @@ def display(cmd,effe,cmdlen=15,indent=2):
         print(" ",end="")
     print(effe)
 
+def know():
+    if len(argv)>2:
+        print("Too many arguments!",file=stderr)
+    try:
+        with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
+            i=json.load(f)
+    except:
+        print("Can't fine the last word",file=stderr)
+        exit()
+    words=read()
+    words[i][2]+=0.1
+    write(words)
+
+
 def add():
     words=read()
     for word in words:
         if argv[2]==word[0]:
             print(argv[2]+" exists!")
             return
+    if len(argv)<4:
+        print("vocab add <en> <ch>!",file=stderr)
+        return
     words.append([argv[2],argv[3],0,1])
     write(words)
     try:
@@ -33,6 +51,7 @@ def help():
     display("show", "Print all words on the vocabulary")
     display("add <en> <ch>","Add a new word")
     display("init","Do initialization")
+    display("know","Decrease the probability of this word")
     display("rm <en>|<ch>","Remove a word from list(Default: the last word)")
     print("Options")
     display("--version","Display version information")
@@ -59,8 +78,11 @@ def get_word():
     if i==-1:
         i=len(words)-1
     else:
-        i+=randint(0,len(words)-1)
-        i%=len(words)
+        while True:
+            i+=randint(0,len(words)-1)
+            i%=len(words)
+            if random()>words[i][2]:
+                break
     word=words[i]
     display(word[0],word[1],indent=0)
     try:
@@ -112,6 +134,7 @@ handler_dict={
     r"show":show,
     r"list":show,
     r"add":add,
+    r"know":know,
     r"word":get_word,
     r"rm":remove,
     r"remove":remove,
