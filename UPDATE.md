@@ -1,3 +1,5 @@
+## V 1.04
+know now support assign a specific word excpet the last word.
 ## V 1.03
 Command Add: know
 mark a word as known to decrease its probability to appear.

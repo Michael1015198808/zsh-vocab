@@ -11,15 +11,27 @@ def display(cmd,effe,cmdlen=15,indent=2):
     print(effe)
 
 def know():
-    if len(argv)>2:
+    if len(argv)>3:
         print("Too many arguments!",file=stderr)
-    try:
-        with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
-            i=json.load(f)
-    except:
-        print("Can't fine the last word",file=stderr)
-        exit()
     words=read()
+    if len(argv)==3:
+        find=-1
+        for i in range(0,len(words)):
+            if argv[2]==words[i][0]:
+                find=i
+                break
+        if find==-1:
+            print(argv[2]+" not found!",file=stderr)
+            return
+        i=find
+    else:
+        try:
+            with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
+                i=json.load(f)
+        except:
+            print("Can't fine the last word",file=stderr)
+            exit()
+    words[i][2]*=0.9
     words[i][2]+=0.1
     write(words)
 
