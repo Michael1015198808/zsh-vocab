@@ -128,7 +128,7 @@ def remove():
         except:
             print("Can't fine the last word",file=stderr)
             exit()
-        print("The last word is",end="")
+        print("The last word is ",end="")
         display(words[i][0],words[i][1],indent=0)
         print("Would you like to delete it from the list?(y for yes)")
         if input() in {"y","yes"}:
