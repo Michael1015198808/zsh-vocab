@@ -84,7 +84,7 @@ def get_word():
     try:
         with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
             i=json.load(f)
-    except json.decoder.JSONDecodeError:
+    except:
         i=0
     words=read()
     if i==-1:
