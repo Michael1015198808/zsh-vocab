@@ -10,42 +10,36 @@ def display(cmd,effe,cmdlen=15,indent=2):
         print(" ",end="")
     print(effe)
 
-def know():
-    if len(argv)>3:
-        print("Too many arguments!",file=stderr)
+def know(namespace):
     words=read()
-    if len(argv)==3:
-        find=-1
+    if namespace.eng:
+        idx=-1
         for i in range(0,len(words)):
-            if argv[2]==words[i][0]:
-                find=i
+            if namespace.eng==words[i][0]:
+                idx=i
                 break
-        if find==-1:
-            print(argv[2]+" not found!",file=stderr)
+        else:
+            print(namespace.eng+" not found!",file=stderr)
             return
-        i=find
     else:
         try:
             with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
-                i=json.load(f)
+                idx=json.load(f)
         except:
             print("Can't fine the last word",file=stderr)
             exit()
-    words[i][2]*=0.9
-    words[i][2]+=0.1
+    words[idx][2]*=0.9
+    words[idx][2]+=0.1
     write(words)
 
 
-def add():
+def add(namespace):
     words=read()
     for word in words:
-        if argv[2]==word[0]:
-            print(argv[2]+" exists!")
+        if namespace.eng==word[0]:
+            print(namespace.eng+" exists!")
             return
-    if len(argv)<4:
-        print("vocab add <en> <ch>!",file=stderr)
-        return
-    words.append([argv[2],argv[3],0,1])
+    words.append([namespace.eng,namespace.chi,0,1])
     write(words)
     try:
         with open(os.path.expanduser("~/.vocab/last_word.json"),"w") as f:
@@ -53,34 +47,18 @@ def add():
     except FileNotFoundError:
         pass
 
-def version():
-    print("version: beta")
+def version(namespace):
+    import version
+    print("version: alpha %d.%d.%d"% (version.major, version.minor, version.revision))
+    print("last update", version.date)
 
-def help():
-    print("Usage: vocab <command>")
-    print("Commands:")
-    display("word", "Get one word(Default)")
-    display("show", "Print all words on the vocabulary")
-    display("add <en> <ch>","Add a new word")
-    display("init","Do initialization")
-    display("know","Decrease the probability of this word")
-    display("rm <en>|<ch>","Remove a word from list(Default: the last word)")
-    print("Options")
-    display("--version","Display version information")
-    display("--help","Display help information")
-    print(r"To load a existed word list, copy it to ~/.vocab/data.json")
-    print('''Format:
-        [["intern", "扣押，拘留", 0, 1], ["sore", "\u75bc\u75db\u7684", 0, 1]]
-(English,Chinese,two numbers for further consideration)
-(The order of English and Chinese can be swaped)''')
-
-def show():
+def show(namespace):
     words=read()
     for word in words:
         display(word[0],word[1],indent=0)
     print(str(len(words))+" words in total!")
 
-def get_word():
+def get_word(namespace):
     try:
         with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
             i=json.load(f)
@@ -103,7 +81,7 @@ def get_word():
     except FileNotFoundError:
         pass
 
-def init():
+def init(namespace):
     print("Are you sure you want to initialize? ALL files will be cleared unless you backup them manually")
     print("""Input "Yes, I know exactly what I'm doing" to continue""")
     if input()=="Yes, I know exactly what I'm doing":
@@ -112,15 +90,17 @@ def init():
     else:
         print("Initialization canceled")
 
-def remove():
+def remove(namespace):
+    print(namespace)
+    return
     words=read()
-    if len(argv)==3:
+    if namespace.word:
         for i in range(0,len(words)):
-            if words[i][0]==argv[2] or words[i][1]==argv[2]:
+            if words[i][0]==namespace.word or words[i][1]==namespace.word:
                 del words[i]
                 write(words)
                 return
-        print(argv[2]+" not found!")
+        print(namespace.word+" not found!")
     else:
         try:
             with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
