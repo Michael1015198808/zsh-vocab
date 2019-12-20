@@ -137,17 +137,3 @@ def remove():
             return
         else:
             print("operation canceled!")
-handler_dict={
-    r"--version":version,
-    r"--help":help,
-    r"-h":help,
-    r"help":help,
-    r"init":init,
-    r"show":show,
-    r"list":show,
-    r"add":add,
-    r"know":know,
-    r"word":get_word,
-    r"rm":remove,
-    r"remove":remove,
-}
