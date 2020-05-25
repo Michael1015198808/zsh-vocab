@@ -43,9 +43,12 @@ def get_word():
     try:
         with open(os.path.expanduser("~/.vocab/last_word.json"),"r") as f:
             i=json.load(f)
-    except json.decoder.JSONDecodeError:
+    except (json.decoder.JSONDecodeError, FileNotFoundError):
         i=0
     words=read()
+    if words == []:
+        print("No words in current vocabulary list!", file = stderr)
+        exit()
     i+=randint(0,len(words)-1)
     i%=len(words)
     word=words[i]

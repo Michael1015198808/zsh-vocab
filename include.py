@@ -4,6 +4,10 @@ from sys import argv
 from sys import stderr
 def read():
     try:
+        os.mkdir(os.path.expanduser("~/.vocab"))
+    except FileExistsError:
+        pass
+    try:
         with open(os.path.expanduser("~/.vocab/data.json"),"r") as f:
             try:
                 words=json.load(f)
@@ -11,11 +15,18 @@ def read():
                 print(os.path.expanduser("~/.vocab/data.json"+" can't be decoded."),file=stderr)
                 print("See if it's set to a wrong authority",file=stderr)
                 print("or the file is broken",file=stderr)
-                words=[]
+                print("Type Y to clear the file.", file=stderr)
+                if input() == 'Y':
+                    write([])
+                    words=[]
+                else:
+                    exit()
         return words
     except FileNotFoundError:
-        print(os.path.expanduser("~/.vocab/data.json"+" is not found."),file=stderr)
-        print("call "+argv[0]+" help for more information",file=stderr)
+        print(os.path.expanduser("~/.vocab/data.json"), "is not found.", file=stderr)
+        print("Initialize it with an empty list", file=stderr)
+        write([])
+        return []
 
 def write(words):
     try:
@@ -23,4 +34,4 @@ def write(words):
             json.dump((words),f)
     except FileNotFoundError:
         print(os.path.expanduser("~/.vocab/data.json"+" is not found."),file=stderr)
-        print("call "+argv[0]+" help for more information",file=stderr)
+        print("call "+argv[0]+" --help for more information",file=stderr)
