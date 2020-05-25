@@ -1,5 +1,7 @@
+## V 1.05
+Improve initializing handling.
 ## V 1.04
-know now support assign a specific word excpet the last word.
+`know` command now support assign a specific word excpet the last word.
 ## V 1.03
 Command Add: know
 mark a word as known to decrease its probability to appear.

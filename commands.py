@@ -65,8 +65,11 @@ def get_word(namespace):
     except:
         i=0
     words=read()
-    if i==-1:
-        i=len(words)-1
+    if words == []:
+        print("No words in current vocabulary list!", file = stderr)
+        exit()
+    if i == -1:
+        i = len(words)-1
     else:
         while True:
             i+=randint(0,len(words)-1)
